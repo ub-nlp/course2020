@@ -27,33 +27,6 @@ class ExtendedFeatures(IDFeatures):
         if feat_id != -1:
             features.append(feat_id)
 
-        if str.istitle(word):
-            # Generate feature name.
-            feat_name = "uppercased::%s" % y_name
-            # Get feature ID from name.
-            feat_id = self.add_feature(feat_name)
-            # Append feature.
-            if feat_id != -1:
-                features.append(feat_id)
-
-        if str.isdigit(word):
-            # Generate feature name.
-            feat_name = "number::%s" % y_name
-            # Get feature ID from name.
-            feat_id = self.add_feature(feat_name)
-            # Append feature.
-            if feat_id != -1:
-                features.append(feat_id)
-
-        if str.find(word, "-") != -1:
-            # Generate feature name.
-            feat_name = "hyphen::%s" % y_name
-            # Get feature ID from name.
-            feat_id = self.add_feature(feat_name)
-            # Append feature.
-            if feat_id != -1:
-                features.append(feat_id)
-
         # Suffixes
         max_suffix = 3
         for i in range(max_suffix):
@@ -67,18 +40,6 @@ class ExtendedFeatures(IDFeatures):
                 if feat_id != -1:
                     features.append(feat_id)
 
-        # Prefixes
-        max_prefix = 3
-        for i in range(max_prefix):
-            if len(word) > i+1:
-                prefix = word[:i+1]
-                # Generate feature name.
-                feat_name = "prefix:%s::%s" % (prefix, y_name)
-                # Get feature ID from name.
-                feat_id = self.add_feature(feat_name)
-                # Append feature.
-                if feat_id != -1:
-                    features.append(feat_id)
 
         return features
 
